@@ -7,6 +7,6 @@ If you want to clone it and exit it to make your own you are welcome to do so.
 # REQUIERMENTS
  - Icarus Verilog http://iverilog.icarus.com
  - vvp
- - gtkwave
+ - gtkwave http://gtkwave.sourceforge.net
  
  
