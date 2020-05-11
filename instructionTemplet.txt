@@ -1,0 +1,71 @@
+Instrucion Templet 
+Miguel Cota computer
+
+
+instrucion:
+|   op  |   function    |   Rd  |   Rs  |   Rt  |   Immidiet    |
+    2           4           5       5       5           11          = 33 bit instruciotn
+
+op:
+00 -> Decode function
+01 -> Add
+10 -> Sub
+11 -> Dont care
+
+function:
+
+0000 -> Noop
+0001 -> Add
+0010 -> Sub
+0011 -> AND
+0100 -> OR
+0101 -> Set if less than
+0110 -> lw
+0111 -> sw
+
+Instruciton number(op,function):
+
+NoOp -> 0x0  -> 000000
+add  -> 0x1  -> 000001
+addi -> 0x5  -> 000101
+sub  -> 0x2  -> 000010
+subi -> 0x6  -> 000110
+OR   -> 0x3  -> 000011
+lw   -> 0x15 -> 010101
+li   -> 0x7  -> 000111
+sw   -> 0x16 -> 010110
+bneq -> 0x20 -> 100000
+
+Registers:
+
+R0 -> 0x0 -> 00000 // should not be accesed always containes 0
+R1 -> 0x1 -> 00001
+R2 -> 0x2 -> 00010
+R3 -> 0x3 -> 00011
+
+
+ instrution: add Rd,Rs
+ Rd = Rs + Rd
+ | opcode | Rd | Rs | unused |
+      6      5    5      17  
+ instuciton: addi Rd,Rs,immediate
+ Rs = Rs + imidiet
+ | opcode | Rd | unused | unused | immediate |
+      6      5    5      5        12
+ instruction lw Rd,Rs[immediate]:
+ Rd = (Rs + imidiet)
+ | opcode | Rd | Rs | unused | immediate |
+      6      5    5      5        12
+ instruction li Rd, immediate
+ Rd = imidiet
+ | opcode | Rd | unused | immediate |
+      6      5      10       12
+ instruction bneq Rd,Rs,immediate
+ PC = PC + 4(imidiet); if Rd == Rs; 
+ | opcode | Rd | Rs | unused | immediate |
+      6      5    5      5        12
+ instruction sw Rd,Rs[immediate]
+ | opcode | Rd | Rs | unused | immediate |
+      6      5    5      5        12
+ instrution noop
+ R0 = R0 + 0
